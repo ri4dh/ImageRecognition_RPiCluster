@@ -1,0 +1,488 @@
+[
+    {
+        "id": "5f17d760.ed7598",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4bd6ce83.f2217",
+        "type": "websocket in",
+        "z": "5f17d760.ed7598",
+        "name": "test",
+        "server": "7a52813a.d09f8",
+        "client": "",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "a5c6baf6.169c08"
+            ]
+        ]
+    },
+    {
+        "id": "a33f0442.c8a978",
+        "type": "ui_text",
+        "z": "5f17d760.ed7598",
+        "group": "e6125cf1.61a8a",
+        "order": 2,
+        "width": "9",
+        "height": "1",
+        "name": "",
+        "label": "Resultaat:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 980,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "30c9a326.5c6c5c",
+        "type": "websocket out",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "server": "",
+        "client": "454b83bf.51f49c",
+        "x": 570,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "45212d1b.e3d164",
+        "type": "ui_form",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "label": "",
+        "group": "e6125cf1.61a8a",
+        "order": 1,
+        "width": "9",
+        "height": "1",
+        "options": [
+            {
+                "label": "fotonummer",
+                "value": "Foto",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "Foto": ""
+        },
+        "payload": "",
+        "topic": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "8de2c20a.4d521",
+                "fcfcc8ee.8e2a28",
+                "f512292d.3dbb18"
+            ]
+        ]
+    },
+    {
+        "id": "435bff76.acd63",
+        "type": "ui_gauge",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "group": "e6125cf1.61a8a",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "gtype": "gage",
+        "title": "",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 870,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a5c6baf6.169c08",
+        "type": "switch",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "key",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "percent",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "c4f91ff8.bd843"
+            ],
+            [
+                "7361b019.ae019"
+            ]
+        ]
+    },
+    {
+        "id": "7361b019.ae019",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "percent:",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "435bff76.acd63"
+            ]
+        ]
+    },
+    {
+        "id": "c4f91ff8.bd843",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "key:",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 20,
+        "wires": [
+            [
+                "48e12527.3a110c",
+                "829957f0.81cd18"
+            ]
+        ]
+    },
+    {
+        "id": "fa5a83bf.2d614",
+        "type": "ui_button",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "group": "e6125cf1.61a8a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reset",
+        "color": "",
+        "bgcolor": "",
+        "icon": "refresh",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "435bff76.acd63",
+                "97cd0c89.a9016"
+            ]
+        ]
+    },
+    {
+        "id": "97cd0c89.a9016",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "a33f0442.c8a978"
+            ]
+        ]
+    },
+    {
+        "id": "9cc697d7.e1ef18",
+        "type": "ui_audio",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "group": "e6125cf1.61a8a",
+        "voice": "nl-NL",
+        "always": true,
+        "x": 1020,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "39eb2fa0.b5781",
+        "type": "ui_audio",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "group": "e6125cf1.61a8a",
+        "voice": "nl-NL",
+        "always": true,
+        "x": 500,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8de2c20a.4d521",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "De afbeelding wordt onderzocht",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "39eb2fa0.b5781"
+            ]
+        ]
+    },
+    {
+        "id": "48e12527.3a110c",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "Ik ben klaar, Ik ben ",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 80,
+        "wires": [
+            [
+                "a33f0442.c8a978"
+            ]
+        ]
+    },
+    {
+        "id": "a1753ac9.ebfc48",
+        "type": "ui_template",
+        "z": "5f17d760.ed7598",
+        "group": "dc19d1a9.63dbf",
+        "name": "",
+        "order": 0,
+        "width": "12",
+        "height": "10",
+        "format": "<div style=\"display:inline-block;\">\n <img src=\"/1.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/2.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/3.jpg\" width=\"32%\" height=\"32%\">\n</div>\n<div style=\"display:inline-block;\">\n <img src=\"/4.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/5.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/6.jpg\" width=\"32%\" height=\"32%\">\n</div>\n<div style=\"display:inline-block;\">\n <img src=\"/7.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/8.jpg\" width=\"32%\" height=\"32%\">\n <img src=\"/9.jpg\" width=\"32%\" height=\"32%\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 820,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fcfcc8ee.8e2a28",
+        "type": "function",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "func": "msg.payload[\"Foto\"]+=\".jpg\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "30c9a326.5c6c5c"
+            ]
+        ]
+    },
+    {
+        "id": "829957f0.81cd18",
+        "type": "split",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 770,
+        "y": 20,
+        "wires": [
+            [
+                "9cc697d7.e1ef18"
+            ]
+        ]
+    },
+    {
+        "id": "f512292d.3dbb18",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 500,
+        "wires": [
+            [
+                "da4f76b6.ea6598",
+                "435bff76.acd63"
+            ]
+        ]
+    },
+    {
+        "id": "da4f76b6.ea6598",
+        "type": "change",
+        "z": "5f17d760.ed7598",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 500,
+        "wires": [
+            [
+                "a33f0442.c8a978"
+            ]
+        ]
+    },
+    {
+        "id": "7a52813a.d09f8",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/test",
+        "wholemsg": "false"
+    },
+    {
+        "id": "e6125cf1.61a8a",
+        "type": "ui_group",
+        "z": "",
+        "name": "Formulier",
+        "tab": "69d8610b.5b711",
+        "order": 2,
+        "disp": true,
+        "width": "9",
+        "collapse": false
+    },
+    {
+        "id": "454b83bf.51f49c",
+        "type": "websocket-client",
+        "z": "",
+        "path": "ws://127.0.0.1:9000/",
+        "tls": "",
+        "wholemsg": "false"
+    },
+    {
+        "id": "dc19d1a9.63dbf",
+        "type": "ui_group",
+        "z": "",
+        "name": "Foto's",
+        "tab": "69d8610b.5b711",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "69d8610b.5b711",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]

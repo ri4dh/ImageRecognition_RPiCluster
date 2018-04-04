@@ -1,0 +1,6 @@
+LTS downloaden van https://nodejs.org/en/
+npm install -g --unsafe-perm node-red
+npm isntall node-red-dashboard
+pip install tornado
+pip install websocket-client
+setting.js vervangen in user/.node-red (setting aangepast voor static content zoals foto's te kunnen oproepen)
