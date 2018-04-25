@@ -7,6 +7,7 @@ import asyncio
 import json
 import tensorflow as tf
 import sys
+import urllib.request
 
 def sendMessage(bericht):
         ws = websocket.WebSocket();
@@ -44,7 +45,9 @@ class EchoWebSocket(ws_server.WebSocketHandler):
         messageToSend = ""
         info = json.loads(message)
         print(info["Foto"])
-        score = checkImage(info["Foto"])
+        urllib.request.urlretrieve(info["Foto"], 'test.jpg')
+        print("start check")
+        score = checkImage('test.jpg')
         print(list(score.items())[0])
         key, value = list(score.items())[0]
         messageToSend = "Ik ben klaar, Ik ben key:" + str(round((value*100),2)) + "% zeker dat het een " + key + " is."
