@@ -11,7 +11,7 @@ import urllib.request
 
 def sendMessage(bericht):
         ws = websocket.WebSocket();
-        ws.connect("ws://localhost:1880/test")
+        ws.connect("ws://localhost:1880/nodeWSserver")
         ws.send(bericht)
         ws.close()
 def checkImage(afbeelding):
