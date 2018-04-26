@@ -50,7 +50,7 @@ class EchoWebSocket(ws_server.WebSocketHandler):
         score = checkImage('test.jpg')
         print(list(score.items())[0])
         key, value = list(score.items())[0]
-        messageToSend = "Ik ben klaar, Ik ben key:" + str(round((value*100),2)) + "% zeker dat het een " + key + " is."
+        messageToSend = "I am ready. I am key:" + str(round((value*100),2)) + "% sure that it is a " + key + " ."
         sendMessage(messageToSend)
         messageToSend = "percent:"+str(round((value*100),2))
         sendMessage(messageToSend)
