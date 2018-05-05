@@ -15,7 +15,7 @@ def sendMessage(bericht):
         ws.send(bericht)
         ws.close()
 def checkImage(afbeelding):
-            scores = {}
+            scores = []
             image_path = afbeelding
             image_data = tf.gfile.FastGFile(image_path, 'rb').read()
             label_lines = [line.rstrip() for line 
@@ -34,7 +34,8 @@ def checkImage(afbeelding):
                     human_string = label_lines[node_id]
                     score = predictions[0][node_id]
                     print('%s (score = %.5f)' % (human_string, score))
-                    scores[human_string]=score
+                    scores.append((human_string, score))
+                print(scores)
                 return scores
 
 class EchoWebSocket(ws_server.WebSocketHandler):
@@ -48,8 +49,8 @@ class EchoWebSocket(ws_server.WebSocketHandler):
         urllib.request.urlretrieve(info["Foto"], 'test.jpg')
         print("start check")
         score = checkImage('test.jpg')
-        print(list(score.items())[0])
-        key, value = list(score.items())[0]
+        print(score[0])
+        key, value = score[0]
         messageToSend = "I am ready. I am key:" + str(round((value*100),2)) + "% sure that it is a " + key + " ."
         sendMessage(messageToSend)
         messageToSend = "percent:"+str(round((value*100),2))
