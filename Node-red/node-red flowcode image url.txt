@@ -1,0 +1,520 @@
+[
+    {
+        "id": "f7c597f.82f5468",
+        "type": "websocket in",
+        "z": "4ba9cd69.0531b4",
+        "name": "test",
+        "server": "c254a35.ef8776",
+        "client": "",
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "521455d3.d391bc"
+            ]
+        ]
+    },
+    {
+        "id": "b54828df.cad0f8",
+        "type": "ui_text",
+        "z": "4ba9cd69.0531b4",
+        "group": "df670ff3.14446",
+        "order": 2,
+        "width": "9",
+        "height": "1",
+        "name": "",
+        "label": "Result:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1140,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "7a3431d6.6d0d1",
+        "type": "websocket out",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "server": "",
+        "client": "69fe6cb5.1e8714",
+        "x": 590,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "ec3f79bb.f69168",
+        "type": "ui_form",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "label": "",
+        "group": "df670ff3.14446",
+        "order": 1,
+        "width": "9",
+        "height": "1",
+        "options": [
+            {
+                "label": "URL",
+                "value": "Foto",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "formValue": {
+            "Foto": ""
+        },
+        "payload": "",
+        "topic": "",
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "c86f0d70.cfb09",
+                "d6b1b82e.17d9f8",
+                "7a3431d6.6d0d1"
+            ]
+        ]
+    },
+    {
+        "id": "63376255.73d73c",
+        "type": "ui_gauge",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "group": "df670ff3.14446",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "gtype": "gage",
+        "title": "",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 910,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "521455d3.d391bc",
+        "type": "switch",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "key",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "Oops",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "percent",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 410,
+        "y": 300,
+        "wires": [
+            [
+                "62805fb4.baa4d"
+            ],
+            [
+                "43737a9f.223974",
+                "b54828df.cad0f8",
+                "825c9fbe.43338"
+            ],
+            [
+                "8f4a24c6.19a3f8"
+            ]
+        ]
+    },
+    {
+        "id": "8f4a24c6.19a3f8",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "percent:",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 400,
+        "wires": [
+            [
+                "63376255.73d73c"
+            ]
+        ]
+    },
+    {
+        "id": "62805fb4.baa4d",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "key:",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 140,
+        "wires": [
+            [
+                "13a13802.7e5b78",
+                "da0a82.7cf5658",
+                "fe2b0c29.cd6be"
+            ]
+        ]
+    },
+    {
+        "id": "43737a9f.223974",
+        "type": "ui_button",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "group": "df670ff3.14446",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reset",
+        "color": "",
+        "bgcolor": "",
+        "icon": "refresh",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 590,
+        "y": 340,
+        "wires": [
+            [
+                "63376255.73d73c",
+                "c965d949.ee3898"
+            ]
+        ]
+    },
+    {
+        "id": "c965d949.ee3898",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 340,
+        "wires": [
+            [
+                "b54828df.cad0f8"
+            ]
+        ]
+    },
+    {
+        "id": "b9724cb3.b3a76",
+        "type": "ui_audio",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "group": "df670ff3.14446",
+        "voice": "en-GB",
+        "always": true,
+        "x": 980,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bd68879b.702b18",
+        "type": "ui_audio",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "group": "df670ff3.14446",
+        "voice": "en-GB",
+        "always": true,
+        "x": 780,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c86f0d70.cfb09",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "I am processing the image.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 540,
+        "wires": [
+            [
+                "bd68879b.702b18",
+                "b935e7d4.c4cdf8"
+            ]
+        ]
+    },
+    {
+        "id": "13a13802.7e5b78",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "I am ready. I am",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 200,
+        "wires": [
+            [
+                "b54828df.cad0f8"
+            ]
+        ]
+    },
+    {
+        "id": "da0a82.7cf5658",
+        "type": "split",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 850,
+        "y": 80,
+        "wires": [
+            [
+                "b9724cb3.b3a76"
+            ]
+        ]
+    },
+    {
+        "id": "d6b1b82e.17d9f8",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "c424dace.ff0f18",
+                "63376255.73d73c"
+            ]
+        ]
+    },
+    {
+        "id": "c424dace.ff0f18",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 600,
+        "wires": [
+            [
+                "b54828df.cad0f8"
+            ]
+        ]
+    },
+    {
+        "id": "81f2a81.1cc4358",
+        "type": "ui_audio",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "group": "df670ff3.14446",
+        "voice": "en-GB",
+        "always": "",
+        "x": 820,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "825c9fbe.43338",
+        "type": "change",
+        "z": "4ba9cd69.0531b4",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "<br/>",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 260,
+        "wires": [
+            [
+                "81f2a81.1cc4358"
+            ]
+        ]
+    },
+    {
+        "id": "b935e7d4.c4cdf8",
+        "type": "ui_toast",
+        "z": "4ba9cd69.0531b4",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 810,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "fe2b0c29.cd6be",
+        "type": "ui_toast",
+        "z": "4ba9cd69.0531b4",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 890,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c254a35.ef8776",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "nodeWSserver",
+        "wholemsg": "false"
+    },
+    {
+        "id": "df670ff3.14446",
+        "type": "ui_group",
+        "z": "",
+        "name": "Image Recognition",
+        "tab": "eada9e0b.360a8",
+        "order": 2,
+        "disp": true,
+        "width": "9",
+        "collapse": false
+    },
+    {
+        "id": "69fe6cb5.1e8714",
+        "type": "websocket-client",
+        "z": "",
+        "path": "ws://127.0.0.1:9000/",
+        "tls": "",
+        "wholemsg": "false"
+    },
+    {
+        "id": "eada9e0b.360a8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]

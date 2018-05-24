@@ -1,0 +1,5 @@
+LTS downloaden van https://nodejs.org/en/
+npm install -g --unsafe-perm node-red
+npm isntall node-red-dashboard
+pip install tornado
+pip install websocket-client
