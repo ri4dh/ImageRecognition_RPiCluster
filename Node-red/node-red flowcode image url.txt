@@ -3,10 +3,10 @@
         "id": "f7c597f.82f5468",
         "type": "websocket in",
         "z": "4ba9cd69.0531b4",
-        "name": "test",
+        "name": "ReceiveSocket",
         "server": "c254a35.ef8776",
         "client": "",
-        "x": 290,
+        "x": 260,
         "y": 300,
         "wires": [
             [
